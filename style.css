@@ -69,21 +69,19 @@ iframe {
 .texto-claro .comentario {
     font-style: italic;
     margin: 0.5em;
-    font-size: 15px;
     color: #476589;
     text-align: center;
 }
 
 .texto-oscuro .comentario {
     font-style: italic;
-    font-size: 15px;
     color: #b7cce5;
     text-align: center;
     margin: 0.5em;
 }
 
 .texto-oscuro .cita {
-    margin-top: -1em;
+    margin-top: -2em;
     font-style: italic;
     color: #b7cce5;
 }
@@ -98,7 +96,7 @@ iframe {
     padding-inline: min(30vw, 5%);
     text-align: left;
     color: #2f303a;
-    background-color: #E4E9EF;
+    background-color: #F3f6fa;
     padding-top: 40px;
     padding-left: 29vw;
     padding-right: 29vw;
@@ -114,15 +112,16 @@ iframe {
     padding-right: 29vw;
 }
 
-.creditos {
-    padding-inline: min(30vw, 5%);
-    text-align: left;
-    color: rgb(0, 0, 0);
-    background-color: #ffffff;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    padding-left: 28vw;
-    padding-right: 28vw;
+.logo-cont {
+    display: flex;
+    height: 200px;
+    align-items: center;
+    justify-content: center;
+}
+
+.creditos p {
+    color: #b7cce5;
+    padding-bottom: -2em;
 }
 
 .logo-cont {
@@ -192,8 +191,8 @@ iframe {
 
 .step {
     margin: 40rem auto;
-    background: rgba(0, 0, 0, 0.75);
-    border-radius: 2px;
+    background: #030c1cbc;
+    border-radius: 10px;
     padding: 1.25em;
     text-align: center;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px;
