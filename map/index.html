@@ -23,6 +23,7 @@
 
         #locationSelect {
             position: absolute;
+            width: 200px;
             top: 10px;
             left: 50%;
             transform: translateX(-50%);
@@ -34,11 +35,31 @@
             border: 2px solid #ccc;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23000" d="M2 0L0 2h4z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 10px;
         }
 
         #locationSelect:hover {
             border-color: #888;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        #locationSelect option {
+            background: white;
+            color: black;
+        }
+
+        @media (max-width: 600px) {
+            #locationSelect {
+                width: 80%;
+                padding: 10px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
