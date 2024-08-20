@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.panellayers/dist/leaflet.panellayers.css" />
+    <script src="https://unpkg.com/leaflet.panellayers"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        #map {
+            height: 100%;
+        }
+
+        #locationSelect {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        #locationSelect:hover {
+            border-color: #888;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <select id="locationSelect">
+        <option value="1">Cochabamba</option>
+        <option value="0">La Paz</option>
+        <option value="2">Santa Cruz</option>
+    </select>
+    <script>
+        var map = L.map('map', {
+            // dragging: !L.Browser.mobile,
+            // scrollWheelZoom: false,
+        }).setView([-17.3895, -66.1568], 12);
+        L.tileLayer('https://api.mapbox.com/styles/v1/labtecnosocial/cm00dafk100cc01qr4wgy2rsc/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGFidGVjbm9zb2NpYWwiLCJhIjoiY20wMXE5ZW5kMjZ0NTJycG43MXNna2pleSJ9.DAvgmkqZJmh_gTehjT0iUg', {
+            maxZoom: 19,
+        }).addTo(map);
+
+        const departamentos = [
+            {
+                id: 0,
+                nombre: "La Paz",
+                latitud: -16.499,
+                longitud: -68.125
+            },
+            {
+                id: 1,
+                nombre: "Cochabamba",
+                latitud: -17.3895,
+                longitud: -66.1568
+            },
+            {
+                id: 2,
+                nombre: "Santa Cruz",
+                latitud: -17.7861,
+                longitud: -63.1806
+            },
+        ];
+
+        document.getElementById('locationSelect').addEventListener('change', function (e) {
+            const selectedId = parseInt(e.target.value);
+            const selectedLocation = departamentos.find(dept => dept.id === selectedId);
+            map.flyTo([selectedLocation.latitud, selectedLocation.longitud], 13);
+        });
+    </script>
+</body>
+
+</html>
