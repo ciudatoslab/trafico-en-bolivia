@@ -114,7 +114,7 @@ iframe {
     padding-inline: min(30vw, 5%);
     text-align: left;
     color: #2f303a;
-    background-color: #F3f6fa;
+    background-color: #edf3f5;
     padding-top: 40px;
     padding-left: 29vw;
     padding-right: 29vw;
@@ -292,7 +292,6 @@ iframe {
     }
 
     .texto-claro {
-        font-size: 16px;
         padding-left: 1em;
         padding-right: 1em;
     }
