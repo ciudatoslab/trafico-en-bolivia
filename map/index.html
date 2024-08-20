@@ -4,12 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.panellayers/dist/leaflet.panellayers.css" />
-    <script src="https://unpkg.com/leaflet.panellayers"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.6.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.6.0/mapbox-gl.js"></script>
     <style>
         * {
             margin: 0;
@@ -55,13 +51,13 @@
         <option value="2">Santa Cruz</option>
     </select>
     <script>
-        var map = L.map('map', {
-            // dragging: !L.Browser.mobile,
-            // scrollWheelZoom: false,
-        }).setView([-17.3895, -66.1568], 12);
-        L.tileLayer('https://api.mapbox.com/styles/v1/labtecnosocial/cm00dafk100cc01qr4wgy2rsc/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGFidGVjbm9zb2NpYWwiLCJhIjoiY20wMXE5ZW5kMjZ0NTJycG43MXNna2pleSJ9.DAvgmkqZJmh_gTehjT0iUg', {
-            maxZoom: 19,
-        }).addTo(map);
+        mapboxgl.accessToken = 'pk.eyJ1IjoibGFidGVjbm9zb2NpYWwiLCJhIjoiY20wMXE5ZW5kMjZ0NTJycG43MXNna2pleSJ9.DAvgmkqZJmh_gTehjT0iUg';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/labtecnosocial/cm00dafk100cc01qr4wgy2rsc', // Use a default Mapbox style for testing
+            center: [-66.1568, -17.3895],
+            zoom: 12
+        });
 
         const departamentos = [
             {
@@ -87,7 +83,10 @@
         document.getElementById('locationSelect').addEventListener('change', function (e) {
             const selectedId = parseInt(e.target.value);
             const selectedLocation = departamentos.find(dept => dept.id === selectedId);
-            map.flyTo([selectedLocation.latitud, selectedLocation.longitud], 13);
+            map.flyTo({
+                center: [selectedLocation.longitud, selectedLocation.latitud],
+                zoom: 13
+            });
         });
     </script>
 </body>
